@@ -51,16 +51,6 @@ project/
 ├── test.py                      # 테스트 코드 파일
 └── LICENSE                      # MIT 라이센스 파일
 ```
-## 질의응답 데모
-
-## 코드 실행 방법
-
-1. **필요한 의존성 설치**  
-   먼저 `requirements.txt`에 정의된 의존성들을 설치합니다.
-
-```bash
-pip install -r requirements.txt
-```
 
 ## 질의응답 데모
 
@@ -82,29 +72,37 @@ pip install -r requirements.txt
 ## 코드 실행 방법
 
 1. **필요한 의존성 설치**  
-먼저 `requirements.txt`에 정의된 의존성들을 설치합니다.
-```bash
-pip install -r requirements.txt
-```
+   먼저 `requirements.txt`에 정의된 의존성들을 설치합니다.
 
-
+    ```bash
+    pip install -r requirements.txt
+    ```
 2. **FastAPI 서버 실행**  
-FastAPI 서버를 실행합니다.
-```bash
-python main.py
+    FastAPI 서버를 실행합니다.
+    ```bash
+    python main.py
 
-```
+    ```
+3. **Postman 또는 cURL을 사용하여 API 테스트**  
+   Postman이나 cURL을 사용하여 API를 테스트할 수 있습니다. 다음은 cURL을 사용한 예시입니다:
 
-3. **Swagger UI로 API 테스트**  
-브라우저에서 `http://localhost:8000/docs`로 접속하여 Swagger UI에서 API를 테스트할 수 있습니다.
+   ```bash
+   curl -X 'POST' \
+     'http://localhost:8000/your-endpoint' \
+     -H 'Content-Type: application/json' \
+     -d '{
+     "user_id": "12345",
+     "question": "스마트스토어에서 주문 취소는 어떻게 하나요?"
+   }'
+    ```
 
 4. **`test.py`를 사용하여 API 테스트**  
-`test.py` 파일을 사용하여 API를 자동으로 테스트할 수 있습니다. `test.py`에는 여러 테스트 케이스가 포함되어 있으며, FastAPI의 테스트 클라이언트를 사용하여 API의 동작을 검증합니다. 
+    `test.py` 파일을 사용하여 API를 자동으로 테스트할 수 있습니다. `test.py`에는 여러 테스트 케이스가 포함되어 있으며, FastAPI의 테스트 클라이언트를 사용하여 API의 동작을 검증합니다. 
 
-`test.py`를 실행하려면 다음 명령어를 사용합니다.
-```bash
-python test.py
-```
+    `test.py`를 실행하려면 다음 명령어를 사용합니다.
+    ```bash
+    python test.py
+    ```
 
 ## 라이센스
 이 프로젝트는 MIT 라이센스를 따릅니다. 자세한 내용은 LICENSE 파일을 참조해주세요.
