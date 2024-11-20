@@ -115,7 +115,7 @@ project/
 
    ```bash
    curl -X 'POST' \
-     'http://localhost:8000/your-endpoint' \
+     'http://localhost:8000/chat/' \
      -H 'Content-Type: application/json' \
      -d '{
      "user_id": "12345",
