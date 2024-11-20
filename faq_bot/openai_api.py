@@ -19,7 +19,13 @@ async def generate_response(score, query, context, faq_answer=None):
         The following answer was found in the FAQ: No relevant answer found.
         Question: {query}
         Please suggest two related questions that the user may be interested in, based on the context of the Naver Smart Store FAQ.
-        These questions should be in Korean, and relevant to the user's question and the Naver Smart Store context.
+
+        ### Response Template:
+        Related Questions:
+        1. [Provide the first related question here]
+        2. [Provide the second related question here]
+
+        Ensure the questions are in Korean and relevant to the user's question and the Naver Smart Store context.
         """
     else:
         # 유사도가 높을 경우 처리 (정확한 답변과 관련 질문 제안)
@@ -29,10 +35,18 @@ async def generate_response(score, query, context, faq_answer=None):
         The following answer was found in the FAQ: {faq_answer}
         Question: {query}
         Please provide the following:
+
         1. A concise and accurate response to the user's question based on the context and FAQ answer.
         2. Two related questions in Korean that the user may be interested in, based on the context. These questions should be relevant to the user's question and context.
 
-        Please make sure to format the response clearly, with each part labeled separately.
+        ### Response Template:
+        Answer: [Provide the concise and accurate response here]
+
+        Related Questions:
+        1. [Provide the first related question here]
+        2. [Provide the second related question here]
+
+        Make sure the response adheres to this format.
         """
             
     response = await client.chat.completions.create(
@@ -42,4 +56,15 @@ async def generate_response(score, query, context, faq_answer=None):
             {"role": "user", "content": prompt}],
         stream=False  # 스트리밍 비활성화
     )
-    return response.choices[0].message.content
+    
+    response_content = response.choices[0].message.content
+    # 템플릿에 맞게 자르기
+    if score < 0.55:
+        answer = ""
+        suggest = response_content.split("Related Questions:")[1].strip()
+    else:
+        sections = response_content.split("Related Questions:")
+        answer = sections[0].split("Answer:")[1].strip()
+        suggest = sections[1].strip()
+    
+    return answer, suggest
