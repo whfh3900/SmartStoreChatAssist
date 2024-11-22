@@ -1,0 +1,26 @@
+.
+├── LICENSE
+├── README.md
+├── faq_bot
+│   ├── __init__.py
+│   ├── application
+│   │   ├── README.md
+│   │   └── chat_service.py
+│   ├── domain
+│   │   ├── README.md
+│   │   ├── conversation.py
+│   │   ├── faq_service.py
+│   │   └── question_handler.py
+│   └── infrastructure
+│       ├── README.md
+│       ├── db_adapter.py
+│       ├── openai_adapter.py
+│       ├── rag.py
+│       └── stopword_processor.py
+├── insert_mongodb.py
+├── main.py
+├── requirements.txt
+├── test.py
+└── tree_structure.txt
+
+5 directories, 19 files
