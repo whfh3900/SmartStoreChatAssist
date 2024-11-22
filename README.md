@@ -59,24 +59,25 @@
 
 ## 프로젝트 구조
 ```bash
-project/
-│
-├── faq_bot/
-│   ├── faq_data_load.py         # pkl 파일에서 FAQ 데이터를 불러오는 함수
-│   ├── openai_api.py            # 비동기적으로 OpenAI API를 통해 답변을 생성하는 함수
-│   ├── stopword_processor.py    # 불용어 처리 함수 및 관련 코드
-│   └── rag.py                   # SentenceTransformer를 사용하여 질문 간 유사도를 측정하는 함수
-│
-├── data/
-│   ├── final_result.pkl         # FAQ 질문과 답변 데이터
-│   ├── conversation_history.json# 사용자별 대화 기록
-│   └── test_question.txt        # 테스트 케이스를 넣어둔 텍스트 파일
-│
-├── main.py                      # FastAPI 애플리케이션 코드
-├── requirements.txt             # 프로젝트 의존성
-├── README.md                    # 프로젝트 설명서
-├── test.py                      # 테스트 코드 파일
-└── LICENSE                      # MIT 라이센스 파일
+├── faq_bot
+│   ├── __init__.py
+│   ├── application
+│   │   ├── README.md
+│   │   └── chat_service.py
+│   ├── domain
+│   │   ├── README.md
+│   │   ├── conversation.py
+│   │   ├── faq_service.py
+│   │   └── question_handler.py
+│   └── infrastructure
+│       ├── README.md
+│       ├── db_adapter.py
+│       ├── openai_adapter.py
+│       ├── rag.py
+│       └── stopword_processor.py
+├── insert_mongodb.py
+├── main.py
+├── test.py
 ```
 
 ## 질의응답 데모
