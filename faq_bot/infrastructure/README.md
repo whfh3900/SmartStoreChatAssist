@@ -1,4 +1,5 @@
 # Infrastructure Layer (인프라스트럭처 계층)
+
 외부 시스템과의 연결을 처리하는 계층입니다. 데이터베이스, API, 메시지 큐 등과의 상호작용을 다룹니다. FastAPI 엔드포인트, MongoDB 연동, OpenAI API 등과의 연결이 포함됩니다.
 ---
 - DBAdapter: MongoDB와의 상호작용을 담당합니다. FAQ 데이터를 DB에서 가져오는 역할을 하며, 데이터베이스 어댑터로서 외부 시스템(여기서는 MongoDB)과의 의존성을 처리합니다.

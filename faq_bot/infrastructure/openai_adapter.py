@@ -3,12 +3,12 @@ from openai import AsyncOpenAI
 
 
 class OpenAIAdapter:
-    def __init__(self, api_key):
+    def __init__(self, api_key:str) -> str:
         self.client = AsyncOpenAI(api_key=api_key)
 
-    async def generate_response(self, score, question, context, faq_answer=None):
+    async def generate_response(self, question:str, context:str, faq_answer=None):
         # 유사도가 낮을 경우 처리 (관련 질문을 두 개 제안)
-        if score < 0.55:
+        if not faq_answer:
             prompt = f"""
             You are the Naver Smart Store FAQ chatbot.
             Context: {context}
@@ -55,7 +55,7 @@ class OpenAIAdapter:
         
         response_content = response.choices[0].message.content
         # 템플릿에 맞게 자르기
-        if score < 0.55:
+        if not faq_answer:
             answer = ""
             suggest = response_content.split("Related Questions:")[1].strip()
         else:
