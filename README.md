@@ -1,6 +1,9 @@
 # 스마트스토어 FAQ 챗봇
 
 이 프로젝트는 스마트스토어와 관련된 질문에 대해 FAQ 데이터를 기반으로 자동으로 답변하는 챗봇 시스템입니다. 사용자 질문을 처리하고, 관련된 FAQ 질문을 찾고, 그에 대한 답변을 OpenAI 모델을 통해 생성하여 제공합니다.
+<div align="center">
+  <img src="image/smartstore_faq_chabot_image.webp" alt="Smart FAQ Chatbot Banner" width="40%">
+</div>
 
 ## 문제 접근 방법
 
